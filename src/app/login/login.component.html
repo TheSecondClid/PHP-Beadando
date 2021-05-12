@@ -1,0 +1,22 @@
+<div class="container">
+  <form #form="ngForm" (submit)="login()" autocomplete="off">
+    <div class="form-wor">
+      <div class="form-group">
+        <label>Username</label>
+        <input name="FoodName" #Username="ngModel" [(ngModel)]="username" class="form-control" required>
+        <div class="validation-error" *ngIf="Username.invalid && Username.touched">This field is required.</div>
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <input name="FoodURL" #Password="ngModel" [(ngModel)]="password" class="form-control" required>
+        <div class="validation-error"  *ngIf="Password.invalid && Password.touched">This field is required.</div>
+      </div>
+
+      <div class="form-group">
+        <button type="submit" [disabled]="form.invalid"  class="btn btn-primary">Login</button>
+      </div>
+    </div>
+  </form>
+
+
+</div>
