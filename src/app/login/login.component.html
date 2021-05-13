@@ -8,7 +8,7 @@
       </div>
       <div class="form-group">
         <label>Password</label>
-        <input name="FoodURL" #Password="ngModel" [(ngModel)]="password" class="form-control" required>
+        <input name="FoodURL" #Password="ngModel" [(ngModel)]="password" class="form-control" required type="password">
         <div class="validation-error"  *ngIf="Password.invalid && Password.touched">This field is required.</div>
       </div>
 
