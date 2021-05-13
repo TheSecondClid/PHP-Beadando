@@ -1,0 +1,29 @@
+<div class="container">
+
+  <table class="table table-bordered table-striped">
+    <thead>
+    <tr>
+      <th>Sentence</th>
+      <th>Character</th>
+      <th>House</th>
+      <th>Action</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let quote of quotes;let i = index" [attr.data-index]="i">
+      <td><span>{{quote.sentence}}</span></td>
+      <td><span>{{quote.character.name}}</span></td>
+      <td><span>{{quote.character.house.name}}</span></td>
+      <td>
+
+        <button [routerLink]="'/edit'" class="btn btn-sm btn-warning" routerLink="form">
+          <i class="fa fa-edit"></i>Edit</button>
+        <button (click)="delete(i)" class="btn btn-sm btn-danger">
+          <i class="fa fa-remove"></i>Delete</button>
+      </td>
+
+    </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {AgeResponse} from '../age-response/age-response.component';
 import {HttpClient} from '@angular/common/http';
+import {Quote} from '../quote/quote.component';
+
 
 @Component({
   selector: 'app-home',
@@ -9,29 +10,29 @@ import {HttpClient} from '@angular/common/http';
 })
 export class HomeComponent implements OnInit {
 
-  ageResponses: AgeResponse[] | undefined;
-  names: string[] = ['David', 'Josef', 'Daniel', 'Benedek', 'Bendeguz'];
-  constructor(private httpClient: HttpClient) {
-  }
+  quotess: Quote[] | undefined;
 
+  constructor(private httpClient: HttpClient) { }
 
   ngOnInit(): void {
-    this.getAgeResponses();
+
+    this.getQuotes();
   }
 
   // tslint:disable-next-line:typedef
-  getAgeResponses(){
-    // tslint:disable-next-line:prefer-for-of
-    for (let i = 0; i < this.names.length; i++){
-      const name: string = this.names[i];
-      this.httpClient.get<AgeResponse>('https://api.agify.io?name=' + name).subscribe(
-        response => {
-          console.log(response);
-          this.ageResponses?.push(response);
-        }
-      );
+  getQuotes(){
+    this.httpClient.get<any>('https://game-of-thrones-quotes.herokuapp.com/v1/random/15').subscribe(
+      response => {
+        console.log(response);
+        this.quotess = response;
+        localStorage.setItem('data', JSON.stringify(this.quotess));
 
-    }
-    localStorage.setItem('data', JSON.stringify(this.ageResponses));
+      }
+    );
+  }
+
+  // tslint:disable-next-line:typedef
+  logout() {
+    localStorage.removeItem('token');
   }
 }
