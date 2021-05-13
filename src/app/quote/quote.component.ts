@@ -48,19 +48,12 @@ export class QuoteComponent implements OnInit {
   ) {
     this.quoteViews = [];
   }
-  quotes: Quote[] | undefined;
+  quotes: QuoteView[] | undefined;
   quoteViews: QuoteView[] | undefined;
 
   ngOnInit(): void {
 
-    this.quotes = JSON.parse(localStorage.getItem('data') as string);
-    // @ts-ignore
-    // @ts-ignore
-    for (const val of this.quotes) {
-      // tslint:disable-next-line:prefer-const
-      let quoteView = new QuoteView(val.sentence, val.character.name, val.character.house.name);
-      this.quoteViews?.push(quoteView);
-    }
+    this.quotes = JSON.parse(localStorage.getItem('quoteViews') as string);
     console.log(this.quoteViews);
   }
 
@@ -71,7 +64,7 @@ export class QuoteComponent implements OnInit {
       // @ts-ignore
       this.quotes.splice(id, 1);
     }
-    localStorage.setItem('data', JSON.stringify(this.quotes));
+    localStorage.setItem('quoteViews', JSON.stringify(this.quotes));
     this.ngOnInit();
   }
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Quote} from '../quote/quote.component';
+import {Quote, QuoteView} from '../quote/quote.component';
 import {Character} from '../quote/quote.component';
 import {House} from '../quote/quote.component';
 
@@ -11,17 +11,17 @@ import {House} from '../quote/quote.component';
 export class EditComponent implements OnInit {
 
   // @ts-ignore
-  adat = new Quote();
+  adat = new QuoteView();
 
   // @ts-ignore
-  quotes: Quote[];
+  quotes: QuoteView[];
 
   id: any;
 
   constructor() { }
 
   ngOnInit(): void {
-    this.quotes = JSON.parse(localStorage.getItem('data') as string);
+    this.quotes = JSON.parse(localStorage.getItem('quoteViews') as string);
     console.log(this.quotes);
   }
   edit(): void {
@@ -29,7 +29,7 @@ export class EditComponent implements OnInit {
       // @ts-ignore
       this.quotes.splice(this.id, 1, this.adat);
     }
-    localStorage.setItem('data', JSON.stringify(this.quotes));
+    localStorage.setItem('quoteViews', JSON.stringify(this.quotes));
     // @ts-ignore
     this.ngOnInit();
   }

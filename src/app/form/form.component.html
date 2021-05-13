@@ -1,0 +1,26 @@
+<form #form="ngForm" (submit)="save()" autocomplete="off">
+  <div class="form-wor">
+    <div class="form-group">
+      <label>Sentence</label>
+      <input name="Name" #Anime="ngModel" [(ngModel)]="adat.sentence" class="form-control" required>
+      <div class="validation-error" *ngIf="Anime.invalid && Anime.touched">This field is required.</div>
+    </div>
+    <div class="form-group">
+      <label>Character</label>
+      <input name="URL" #Character="ngModel" [(ngModel)]="adat.characterName" class="form-control" required>
+      <div class="validation-error"  *ngIf="Character.invalid && Character.touched">This field is required.</div>
+    </div>
+    <div class="form-group">
+      <label>House</label>
+      <input name="URL" #Quote="ngModel" [(ngModel)]="adat.house" class="form-control" required>
+      <div class="validation-error"  *ngIf="Quote.invalid && Quote.touched">This field is required.</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <button type="submit" [disabled]="form.invalid" class="btn btn-primary">Submit</button>
+  </div>
+</form>
+<div>
+  <button [routerLink]="'/quote'" class="btn btn-primary">
+    <i class="fa fa-edit"></i>Back</button>
+</div>

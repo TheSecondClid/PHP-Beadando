@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Quote} from '../quote/quote.component';
+import {Quote, QuoteView} from '../quote/quote.component';
 
 
 @Component({
@@ -11,8 +11,12 @@ import {Quote} from '../quote/quote.component';
 export class HomeComponent implements OnInit {
 
   quotess: Quote[] | undefined;
+  quotes: Quote[] | undefined;
+  quoteViews: QuoteView[] | undefined;
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {
+    this.quoteViews = [];
+  }
 
   ngOnInit(): void {
 
@@ -29,6 +33,15 @@ export class HomeComponent implements OnInit {
 
       }
     );
+    // @ts-ignore
+    this.quotes = JSON.parse(localStorage.getItem('data') as string);
+    // @ts-ignore
+    for (const val of this.quotes) {
+      // tslint:disable-next-line:prefer-const
+      let quoteView = new QuoteView(val.sentence, val.character.name, val.character.house.name);
+      this.quoteViews?.push(quoteView);
+    }
+    localStorage.setItem('quoteViews', JSON.stringify(this.quoteViews));
   }
 
   // tslint:disable-next-line:typedef

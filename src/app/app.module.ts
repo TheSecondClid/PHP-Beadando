@@ -9,6 +9,7 @@ import {FormsModule} from '@angular/forms';
 import { QuoteComponent } from './quote/quote.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { EditComponent } from './edit/edit.component';
+import { FormComponent } from './form/form.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { EditComponent } from './edit/edit.component';
     LoginComponent,
     HomeComponent,
     QuoteComponent,
-    EditComponent
+    EditComponent,
+    FormComponent
   ],
   imports: [
     BrowserModule,

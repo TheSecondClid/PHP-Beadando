@@ -6,21 +6,28 @@
       <th>Sentence</th>
       <th>Character</th>
       <th>House</th>
-      <th>Action</th>
+      <th>Edit</th>
+      <th>Delete</th>
+      <th>Create</th>
 
     </tr>
     </thead>
     <tbody>
     <tr *ngFor="let quote of quotes;let i = index" [attr.data-index]="i">
       <td><span>{{quote.sentence}}</span></td>
-      <td><span>{{quote.character.name}}</span></td>
-      <td><span>{{quote.character.house.name}}</span></td>
+      <td><span>{{quote.characterName}}</span></td>
+      <td><span>{{quote.house}}</span></td>
       <td>
-
-        <button [routerLink]="'/edit'" class="btn btn-sm btn-warning" routerLink="form">
+        <button [routerLink]="'/edit'" class="btn btn-primary" routerLink="form">
           <i class="fa fa-edit"></i>Edit</button>
-        <button (click)="delete(i)" class="btn btn-sm btn-danger">
+      </td>
+      <td>
+        <button (click)="delete(i)" class="btn btn-primary">
           <i class="fa fa-remove"></i>Delete</button>
+      </td>
+      <td>
+        <button [routerLink]="'/create'" class="btn btn-primary" routerLink="form">
+          <i class="fa fa-edit"></i>Create</button>
       </td>
 
     </tr>

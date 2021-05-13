@@ -25,6 +25,6 @@ export class LoginComponent implements OnInit {
     }
   }
   goToUrl(): void {
-    this.document.location.href = 'http://localhost:4200/home';
+    this.document.location.href = 'http://localhost:4200/quote';
   }
 }

@@ -1,25 +1,25 @@
 <div class="container">
-<!--
+
     <form #form="ngForm" (submit)="edit()" autocomplete="off">
       <div class="form-wor">
         <div class="form-group">
           <label>ID</label>
-          <input name="FoodName" #idvalue="ngModel" [(ngModel)]="id" class="form-control" required>
+          <input name="Name" #idvalue="ngModel" [(ngModel)]="id" class="form-control" required>
           <div class="validation-error" *ngIf="idvalue.invalid && idvalue.touched">This field is required.</div>
         </div>
         <div class="form-group">
-          <label>Anime</label>
-          <input name="FoodName" #Anime="ngModel" [(ngModel)]="adat.sentence" class="form-control" required>
+          <label>Sentence</label>
+          <input name="Name" #Anime="ngModel" [(ngModel)]="adat.sentence" class="form-control" required>
           <div class="validation-error" *ngIf="Anime.invalid && Anime.touched">This field is required.</div>
         </div>
         <div class="form-group">
           <label>Character</label>
-          <input name="FoodURL" #Character="ngModel" [(ngModel)]="adat.character" class="form-control" required>
+          <input name="URL" #Character="ngModel" [(ngModel)]="adat.characterName" class="form-control" required>
           <div class="validation-error"  *ngIf="Character.invalid && Character.touched">This field is required.</div>
         </div>
         <div class="form-group">
-          <label>Quote</label>
-          <input name="FoodURL" #Quote="ngModel" [(ngModel)]="adat.character.house.name" class="form-control" required>
+          <label>House</label>
+          <input name="URL" #Quote="ngModel" [(ngModel)]="adat.house" class="form-control" required>
           <div class="validation-error"  *ngIf="Quote.invalid && Quote.touched">This field is required.</div>
         </div>
       </div>
@@ -27,8 +27,12 @@
         <button type="submit" [disabled]="form.invalid" class="btn btn-primary">Submit</button>
       </div>
     </form>
+    <div>
+      <button [routerLink]="'/quote'" class="btn btn-primary">
+        <i class="fa fa-edit"></i>Back</button>
+    </div>
 
--->
+
 
   <table class="table table-bordered table-striped">
     <thead>
@@ -43,8 +47,8 @@
     <tbody>
     <tr *ngFor="let quote of quotes;let i = index" [attr.data-index]="i">
       <td><span>{{quote.sentence}}</span></td>
-      <td><span>{{quote.character.name}}</span></td>
-      <td><span>{{quote.character.house.name}}</span></td>
+      <td><span>{{quote.characterName}}</span></td>
+      <td><span>{{quote.house}}</span></td>
       <td><span>{{i}}</span></td>
 
     </tr>
